@@ -9,4 +9,5 @@ urlpatterns = [
     path('expose/new/', views.ExposeCreateView.as_view(), name="expose-create"),
     path('expose/<int:pk>/update/', views.ExposeUpdateView.as_view(), name="expose-update"),
     path('expose/<int:pk>/delete/', views.ExposeDeleteView.as_view(), name="expose-delete"),
+    path('api/',include('tracker.api.urls')),
 ]
