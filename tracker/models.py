@@ -31,4 +31,4 @@ class ExpenseIncome(models.Model):
         else:
             return self.amount + (self.amount * self.tax / 100)
     def __str__(self) :
-        return self.title 
+        return f"{self.title} - {self.amount}"
