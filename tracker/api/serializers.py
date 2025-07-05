@@ -31,8 +31,8 @@ class ExpenseIncomeSerializer(serializers.ModelSerializer):
         model = ExpenseIncome
         fields = ['id', 'user', 'title', 'description', 'amount', 
                  'transaction_type', 'tax', 'tax_type', 'total',
-                 'created_at', 'updated_at']
-        read_only_fields = ('id','total','user', 'created_at', 'updated_at')
+                 'created_date', 'updated_date']
+        read_only_fields = ('id','total','user', 'created_date', 'updated_date')
         
     def validate_amount(self, value):
         if value <= 0:
