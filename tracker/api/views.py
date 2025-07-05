@@ -1,15 +1,12 @@
-from .models import ExpenseIncome
-from .api.serializers import ExpenseIncomeSerializer
-from .api.permissions import IsOwnerOrSuperuser
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.serializers import ModelSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets, generics, status
-from .models import ExpenseIncome
-from .api.serializers import UserRegisterSerializer, ExpenseIncomeSerializer
-from .api.permissions import IsOwnerOrSuperuser
+from tracker.models import ExpenseIncome
+from ..api.serializers import UserRegisterSerializer, ExpenseIncomeSerializer
+from ..api.permissions import IsOwnerOrSuperuser
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
