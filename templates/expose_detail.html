@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ object.title }} - Expose Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .post-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="expose-container">
+        <h1>User: {{ object.user }}</h1>
+        <h2>Title:{{object.title}}</h2>
+        <p>Description: {{ object.description }}</p>
+        <p>Amount:{{object.amount}}</p>
+        <p>Transaction-type:{{object.transaction_type}}</p>
+        <p>Tax:{{object.tax}}</p>
+        <p>Tax-type:{{object.tax_type}}</p>
+        <p>Created-date:{{object.created_date}}</p>
+        <p>Updated-date:{{object.updated_date}}</p>
+    </div>
+</body>
+</html>

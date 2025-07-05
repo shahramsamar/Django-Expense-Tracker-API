@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expose List</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1d3557;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .header span {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .auth-buttons a {
+            margin-left: 15px;
+            color: white;
+            text-decoration: none;
+            background-color: #457b9d;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+        .auth-buttons a:hover {
+            background-color: #1d3557;
+        }
+        .container {
+            flex: 1;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #457b9d;
+            margin: 0;
+            font-size: 20px;
+        }
+        .post-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-item:last-child {
+            border-bottom: none;
+        }
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+        .buttons a, .buttons button {
+            background-color: #457b9d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .buttons a:hover, .buttons button:hover {
+            background-color: #1d3557;
+        }
+        .buttons button {
+            background-color: #e63946;
+        }
+        .buttons button:hover {
+            background-color: #b51d2b;
+        }
+        .btn-disabled {
+            background-color: #e0e0e0;
+            color: #777;
+            cursor: not-allowed;
+        }
+        .create-button {
+            display: inline-block;
+            background-color: #1d3557;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .create-button:hover {
+            background-color: #457b9d;
+        }    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <span>Welcome {{ user.username }}</span>
+        </div>
+        {% comment %} <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <!-- Logout Button -->
+                <a href="#">Logout</a>
+            {% else %}
+                <!-- Login Button -->
+                <a href="#">Login</a>
+            {% endif %}
+        </div> {% endcomment %}
+    </div>
+
+    <div class="container">
+        <h1>Expose List</h1>
+        
+        <!-- Create Button -->
+        <a href="{% url 'expose-create' %}" class="create-button">Create New expose</a> 
+
+        {% for item in exposes %}
+            <div class="expose-item">
+                <div>
+                    <a href="{% url 'expose-detail' pk=item.id %}">
+                        <h2> Number:{{item.id}} {{ item.title }}</h2>
+                    </a>
+                </div>
+                <div class="buttons">
+                    <!-- Edit Button -->
+                    <a href="{% url 'expose-update' pk=item.id %}">Edit</a>
+                    
+                    <!-- Delete Button -->
+                    <a href="{% url "expose-delete" pk=item.id %}">Delete</a>
+                    
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
